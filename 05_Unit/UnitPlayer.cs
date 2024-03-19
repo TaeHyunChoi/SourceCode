@@ -89,6 +89,11 @@ public class UnitPlayer : Unit
     SET_POSITION:
         dir = CMath.FloorToVector(dir * dist, 3);
         targetPoint = CMath.FloorToVector(nowPoint + dir, 3);
+        
+        if (false == CanMove(map, nowPoint, targetPoint, out targetPoint))
+        {
+            return;
+        }
         transform.position = targetPoint;
         beforeDir = dir;
     }
